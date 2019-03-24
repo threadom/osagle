@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context=".FullscreenActivity"
+    tools:context=".holeinone"
     android:orientation="vertical">
 
 <com.google.android.gms.ads.AdView
@@ -17,20 +17,16 @@
     ads:adSize="BANNER"
     ads:adUnitId="ca-app-pub-1474925965103443/2406853834" />
 
-<com.osagle.view
-    android:id="@+id/openGLView1"
+<com.osagle.osagle
+    android:id="@+id/gl_display"
     android:layout_width="match_parent"
-    android:layout_height="410dp"
-    ads:name="main"
-    ads:path="/projects/examples/renderer.json"
+    android:layout_height="379dp"
     />
 
-<com.osagle.view
-    android:id="@+id/openGLView2"
+<com.osagle.osagle
+    android:id="@+id/gl_control"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    ads:name="main"
-    ads:path="/projects/examples/controls.json"
     />
 
 </LinearLayout>

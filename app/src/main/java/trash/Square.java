@@ -1,11 +1,13 @@
-package com.example.holeinone;
+package trash;
 
 import android.content.Context;
 import android.opengl.GLES20;
 
-import com.example.holeinone.tools.BufferUtils;
-import com.example.holeinone.tools.ShaderProgram;
-import com.example.holeinone.tools.ShaderUtils;
+import com.example.holeinone.R;
+
+import trash.tools.BufferUtils;
+import trash.tools.ShaderProgram;
+import trash.tools.ShaderUtils;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;

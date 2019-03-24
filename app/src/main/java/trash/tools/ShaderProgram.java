@@ -1,4 +1,4 @@
-package com.example.holeinone.tools;
+package trash.tools;
 
 import android.graphics.Color;
 import android.graphics.PointF;

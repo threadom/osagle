@@ -1,4 +1,4 @@
-package com.example.holeinone.tools;
+package trash.tools;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
