@@ -82,7 +82,7 @@ public class scenes extends Thread implements iCallBack {
         }
     }
     public void create(String pName, JSONObject pJSON) {
-        debug.log("OSAGLE.scenes", "create : " + pJSON);
+        debug.log("OSAGLE.scenes", "create : " + pJSON.toString());
 
         try {
             Iterator<String> keys = pJSON.keys();

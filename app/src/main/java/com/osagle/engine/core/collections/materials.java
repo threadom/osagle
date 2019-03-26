@@ -1,8 +1,12 @@
 package com.osagle.engine.core.collections;
 
+import com.osagle.engine.core.abstracts.material;
+import com.osagle.engine.core.materials.flatMaterial;
+import com.osagle.engine.core.materials.phongMaterial;
+import com.osagle.engine.core.materials.wireMaterial;
+import com.osagle.engine.core.various.color;
 import com.osagle.engine.debug;
 import com.osagle.engine.iCallBack;
-import com.osagle.engine.loader.jsonLoader;
 import com.osagle.engine.loader.loader;
 import com.osagle.osagle;
 
@@ -74,9 +78,72 @@ public class materials extends Thread implements iCallBack {
     public void create(String pKey, JSONObject pJSON) {
         debug.log("OSAGLE.materials", "create : " + pJSON.toString());
 
-        setup(null, pJSON);
+        try {
+            if (pJSON.has("type")) {
+                String aType = pJSON.getString("type");
+                switch (aType) {
+                    case "flat": this.setup(new flatMaterial(), pJSON); break;
+                    case "phong": this.setup(new phongMaterial(), pJSON); break;
+                    case "wireframe": this.setup(new wireMaterial(), pJSON); break;
+                    default:
+                }
+            }
+        }
+        catch (Exception e) {
+            debug.log("OSAGLE.materials", "create.Exception : " + e.toString());
+        }
     }
-    public void setup(Object pObject, JSONObject pJSON) {
+    public void setup(Object object, JSONObject pJSON) {}
+    public void setup(material pMaterial, JSONObject pJSON) {
         debug.log("OSAGLE.materials", "setup");
+
+        try {
+            if (pJSON.has("side")) {
+                if (pJSON.getString("side") == "double") { pMaterial.side = material.doubleSide; }
+                if (pJSON.getString("side") == "front") { pMaterial.side = material.frontSide; }
+                if (pJSON.getString("side") == "back") { pMaterial.side = material.backSide; }
+            }
+            if (pJSON.has("texture")) {
+                pMaterial.texturemap = mOsagle.getTexturemap(pJSON.getString("texturemap"));
+            }
+            else {
+                if (pJSON.has("color")) { pMaterial.color = new color(pJSON.getJSONArray("color")); }
+                else { pMaterial.color = new color(new int[]{1,1,1}); }
+            }
+            if (pJSON.has("bumpmap")) {
+                pMaterial.bumpmap = mOsagle.getBumpmap(pJSON.getString("bumpmap"));
+                if (pJSON.has("bumpscale")) {
+                    pMaterial.bumpscale = (float) pJSON.getDouble("bumpscale");
+                }
+            }
+            if (pJSON.has("alphamap")) {
+                pMaterial.alphamap = mOsagle.getAlphamap(pJSON.getString("alphamap"));
+                pMaterial.transparent = true;
+            }
+            if (pJSON.has("ambient")) {
+                pMaterial.ambient = new color(pJSON.getJSONArray("ambient"));
+            }
+            if (pJSON.has("emissive")) {
+                pMaterial.emissive = new color(pJSON.getJSONArray("emissive"));
+            }
+            if (pJSON.has("specular")) {
+                pMaterial.specular = new color(pJSON.getJSONArray("specular"));
+            }
+            if (pJSON.has("shininess")) {
+                pMaterial.shininess = (float) pJSON.getDouble("shininess");
+            }
+            if (pJSON.has("reflectivity") || pJSON.has("opacity")) {
+                if (pJSON.has("reflectivity")) {
+                    pMaterial.reflectivity = (float) pJSON.getDouble("reflectivity");
+                }
+                if (pJSON.has("opacity")) {
+                    pMaterial.opacity = (float) pJSON.getDouble("opacity");
+                }
+                pMaterial.texturecube = mOsagle.getTexturecube(pJSON.getString("texturecube"));
+            }
+        }
+            catch (Exception e) {
+            debug.log("OSAGLE.materials", "create.Exception : " + e.toString());
+        }
     }
 }

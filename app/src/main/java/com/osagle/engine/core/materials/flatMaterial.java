@@ -1,4 +1,6 @@
 package com.osagle.engine.core.materials;
 
-public class flatMaterial {
+import com.osagle.engine.core.abstracts.material;
+
+public class flatMaterial extends material {
 }

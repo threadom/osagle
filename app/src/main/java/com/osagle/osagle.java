@@ -20,6 +20,10 @@ import com.osagle.engine.core.collections.texts;
 import com.osagle.engine.core.collections.textures;
 import com.osagle.engine.core.collections.tilesmaps;
 import com.osagle.engine.core.collections.variables;
+import com.osagle.engine.core.maps.alphamap;
+import com.osagle.engine.core.maps.bumpmap;
+import com.osagle.engine.core.maps.texturemap;
+import com.osagle.engine.core.various.texturecube;
 import com.osagle.engine.debug;
 import com.osagle.renderers.renderer;
 import com.osagle.renderers.renderers;
@@ -141,6 +145,10 @@ public class osagle extends GLSurfaceView {
         debug.log("OSAGLE", "setMeshes : " + pJSON.toString());
         mMeshes.todo(pJSON);
     }
+    public texturemap getTexturemap(String pName) { return null; }
+    public bumpmap getBumpmap(String pName) { return null; }
+    public alphamap getAlphamap(String pName) { return null; }
+    public texturecube getTexturecube(String pName) { return null; }
 //    public void resize() {
 //        debug.log("OSAGLE", "resize: " + this.getLayoutParams().height);
 //    }
