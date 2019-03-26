@@ -35,7 +35,7 @@ public class renderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         debug.log("OSAGLE.renderer", "onSurfaceChanged");
-        mOsagle.resize();
+//        mOsagle.resize();
         GLES20.glViewport(0, 0, width, height);
     }
 

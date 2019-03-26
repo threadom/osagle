@@ -15,7 +15,7 @@
   },
   "materials" : {
     "normal" : {
-      "type" : "normal"
+      "type" : "basic"
     }
   },
   "geometries" : {

@@ -1,9 +1,10 @@
-package com.osagle.engine.core;
+package com.osagle.engine.core.collections;
 
 import com.osagle.engine.debug;
 import com.osagle.engine.iCallBack;
 import com.osagle.engine.loader.jsonLoader;
 import com.osagle.engine.loader.loader;
+import com.osagle.osagle;
 
 import org.json.JSONObject;
 
@@ -13,15 +14,15 @@ import java.util.Map;
 
 public class alphamaps extends Thread implements iCallBack {
     private long mThreadSleep;
-    private String mRendererName;
+    private osagle mOsagle;
 
     private Map mMapTodo = new HashMap();
     private Map mMapDoing = new HashMap();
     private Map mMapCreated = new HashMap();
     private Map mMapOld = new HashMap();
 
-    public alphamaps(String pRendererName, long pThreadSleep) {
-        mRendererName = pRendererName;
+    public alphamaps(osagle pOsagle, long pThreadSleep) {
+        mOsagle = pOsagle;
         mThreadSleep = pThreadSleep;
 
         this.start();
@@ -36,7 +37,7 @@ public class alphamaps extends Thread implements iCallBack {
         }
     }
     public void todo(JSONObject pJSON) {
-        debug.log("OSAGLE.alphamaps", "add");
+        debug.log("OSAGLE.alphamaps", "todo : " + pJSON.toString());
 
         try  {
             Iterator<String> keys = pJSON.keys();
@@ -71,7 +72,7 @@ public class alphamaps extends Thread implements iCallBack {
     }
     public void parse(String pKey, JSONObject pJSON) {}
     public void create(String pKey, JSONObject pJSON) {
-        debug.log("OSAGLE.alphamaps", "create");
+        debug.log("OSAGLE.alphamaps", "create : " + pJSON.toString());
 
         setup(null, pJSON);
     }

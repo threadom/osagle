@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+
 import com.osagle.osagle;
 
 /**
@@ -26,8 +27,8 @@ public class holeinone extends AppCompatActivity {
         gl_display = (osagle) findViewById(R.id.gl_display);
         gl_control = (osagle) findViewById(R.id.gl_control);
 
-        gl_display.setScene("example1", "example1");
-        gl_control.setScene("example2", "example2");
+        gl_display.setScene("example1");
+        gl_control.setScene("example2");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.osagle.engine.core;
+package com.osagle.engine.core.collections;
 
 import com.osagle.engine.debug;
 import com.osagle.engine.iCallBack;
@@ -16,15 +16,15 @@ import java.util.Map;
 
 public class scenes extends Thread implements iCallBack {
     private long mThreadSleep;
-    private String mRendererName;
+    private osagle mOsagle;
 
     private Map mMapTodo = new HashMap();
     private Map mMapDoing = new HashMap();
     private Map mMapCreated = new HashMap();
     private Map mMapOld = new HashMap();
 
-    public scenes(String pRendererName, long pThreadSleep) {
-        mRendererName = pRendererName;
+    public scenes(osagle pOsagle, long pThreadSleep) {
+        mOsagle = pOsagle;
         mThreadSleep = pThreadSleep;
 
         this.start();
@@ -38,17 +38,17 @@ public class scenes extends Thread implements iCallBack {
             debug.log("OSAGLE.scenes", "run.Exception : "+e.toString());
         }
     }
-    public void todo(String pName, String pFile) {
-        debug.log("OSAGLE.scenes", "add");
+    public void todo(String pFile) {
+        debug.log("OSAGLE.scenes", "add : " + pFile);
 
-        if ((mMapDoing.get(pName) == null) && (mMapCreated.get(pName) == null)) {
-            if (mMapOld.get(pName) != null) {
-                mMapCreated.put(pName, mMapOld.get(pName));
+        if ((mMapDoing.get(pFile) == null) && (mMapCreated.get(pFile) == null)) {
+            if (mMapOld.get(pFile) != null) {
+                mMapCreated.put(pFile, mMapOld.get(pFile));
             }
-            else if (mMapTodo.get(pName) == null) {
-                mMapTodo.put(pName, pFile);
+            else if (mMapTodo.get(pFile) == null) {
+                mMapTodo.put(pFile, pFile);
             }
-        } else { mMapTodo.remove(pName); }
+        } else { mMapTodo.remove(pFile); }
     }
     public void doing() {
         debug.log("OSAGLE.scenes", "doing");
@@ -70,19 +70,11 @@ public class scenes extends Thread implements iCallBack {
             Iterator<String> keys = pJSON.keys();
             while (keys.hasNext()) {
                 String key = keys.next();
-                debug.log("OSAGLE.scenes", "key : " + key);
-                if (key.equals("scene")) {
-                    debug.log("OSAGLE.scenes", "key : " + key);
-                    this.create(pName, pJSON.getJSONObject(key));
-                }
-                else if(key.equals("cameras")) {
-                }
-                else if(key.equals("materials")) {
-                }
-                else if(key.equals("geometries")) {
-                }
-                else if(key.equals("meshes")) {
-                }
+                if (key.equals("scene")) { this.create(pName, pJSON.getJSONObject(key)); }
+                else if(key.equals("cameras")) { mOsagle.setCameras(pJSON.getJSONObject(key)); }
+                else if(key.equals("materials")) { mOsagle.setMaterials(pJSON.getJSONObject(key)); }
+                else if(key.equals("geometries")) { mOsagle.setGeometries(pJSON.getJSONObject(key));}
+                else if(key.equals("meshes")) { mOsagle.setMeshes(pJSON.getJSONObject(key)); }
             }
         }
         catch (Exception e) {
@@ -103,7 +95,7 @@ public class scenes extends Thread implements iCallBack {
                     float aGreen = (float) aColor.getDouble(1);
                     float aBlue = (float) aColor.getDouble(2);
                     float aAlpha = (float) aColor.getDouble(3);
-                    osagle.getRenderer(mRendererName).setClearColor(aRed,aGreen,aBlue,aAlpha);
+                    mOsagle.getRenderer().setClearColor(aRed,aGreen,aBlue,aAlpha);
                 }
             }
         }
