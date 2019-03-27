@@ -5,6 +5,6 @@ public class matrix4 {
 
     }
     public double[] elements() {
-
+        return new double[]{};
     }
 }

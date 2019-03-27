@@ -142,7 +142,7 @@ public class euler {
     }
 
     public euler setFromQuaternion(quaternion pQuaternion, String pOrder) {
-        setFromQuaternion(pQuaternion, pOrder, true);
+        return this.setFromQuaternion(pQuaternion, pOrder, true);
     }
     public euler setFromQuaternion(quaternion pQuaternion, String pOrder, boolean pUpdate) {
         matrix4 aMatrix = new matrix4();
@@ -194,7 +194,7 @@ public class euler {
         return new vector3(this.mX, this.mY, this.mZ);
     }
 
-    public setOnChange(Method pCallBack) {
+    public void setOnChange(Method pCallBack) {
         mCallback = pCallBack;
     }
 
