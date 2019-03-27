@@ -23,7 +23,7 @@ import com.osagle.engine.core.collections.variables;
 import com.osagle.engine.core.maps.alphamap;
 import com.osagle.engine.core.maps.bumpmap;
 import com.osagle.engine.core.maps.texturemap;
-import com.osagle.engine.core.various.texturecube;
+import com.osagle.engine.core.utils.texturecube;
 import com.osagle.engine.debug;
 import com.osagle.renderers.renderer;
 import com.osagle.renderers.renderers;

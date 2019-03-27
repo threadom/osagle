@@ -9,10 +9,10 @@ public abstract class material {
     public com.osagle.engine.core.maps.texturemap texturemap;
     public com.osagle.engine.core.maps.alphamap alphamap;
 
-    public com.osagle.engine.core.various.color color = new com.osagle.engine.core.various.color(new int[]{1,1,1});
-    public com.osagle.engine.core.various.color ambient = new com.osagle.engine.core.various.color(new int[]{1,1,1});
-    public com.osagle.engine.core.various.color specular = new com.osagle.engine.core.various.color(new int[]{1,1,1});
-    public com.osagle.engine.core.various.color emissive = new com.osagle.engine.core.various.color(new int[]{1,1,1});
+    public com.osagle.engine.core.utils.color color = new com.osagle.engine.core.utils.color(new int[]{1,1,1});
+    public com.osagle.engine.core.utils.color ambient = new com.osagle.engine.core.utils.color(new int[]{1,1,1});
+    public com.osagle.engine.core.utils.color specular = new com.osagle.engine.core.utils.color(new int[]{1,1,1});
+    public com.osagle.engine.core.utils.color emissive = new com.osagle.engine.core.utils.color(new int[]{1,1,1});
 
     public com.osagle.engine.core.maps.bumpmap bumpmap;
     public float bumpscale = 0;
@@ -21,5 +21,5 @@ public abstract class material {
     public float reflectivity = 0;
     public float opacity = 1;
 
-    public com.osagle.engine.core.various.texturecube texturecube;
+    public com.osagle.engine.core.utils.texturecube texturecube;
 }

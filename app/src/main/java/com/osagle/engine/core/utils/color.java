@@ -1,4 +1,4 @@
-package com.osagle.engine.core.various;
+package com.osagle.engine.core.utils;
 
 import org.json.JSONArray;
 

@@ -4,7 +4,7 @@ import com.osagle.engine.core.abstracts.material;
 import com.osagle.engine.core.materials.flatMaterial;
 import com.osagle.engine.core.materials.phongMaterial;
 import com.osagle.engine.core.materials.wireMaterial;
-import com.osagle.engine.core.various.color;
+import com.osagle.engine.core.utils.color;
 import com.osagle.engine.debug;
 import com.osagle.engine.iCallBack;
 import com.osagle.engine.loader.loader;
