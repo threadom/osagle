@@ -16,4 +16,5 @@ public class vector3 {
     public double getZ() {
         return 0;
     }
+    public double dot(vector3 pVector) { return 0; }
 }

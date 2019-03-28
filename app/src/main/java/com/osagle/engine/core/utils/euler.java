@@ -31,13 +31,13 @@ public class euler {
     public static final String DefaultOrder = "XYZ";
 
     public double getX() { return mX; }
-    public void setX(Double pX) { mX = pX; this.onChangeCallback(); }
+    public void setX(double pX) { mX = pX; this.onChangeCallback(); }
 
     public double getY() { return mY; }
-    public void setY(Double pY) { mX = pY; this.onChangeCallback(); }
+    public void setY(double pY) { mY = pY; this.onChangeCallback(); }
 
     public double getZ() { return mZ; }
-    public void setZ(Double pZ) { mX = pZ; this.onChangeCallback(); }
+    public void setZ(double pZ) { mZ = pZ; this.onChangeCallback(); }
 
     public String getOrder() { return mOrder; }
     public void setOrder(String pOrder) { mOrder = pOrder; this.onChangeCallback(); }
